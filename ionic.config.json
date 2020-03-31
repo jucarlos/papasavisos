@@ -1,0 +1,7 @@
+{
+  "name": "avisos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
