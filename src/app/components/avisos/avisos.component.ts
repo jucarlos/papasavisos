@@ -9,6 +9,8 @@ import { Aviso } from '../../interfaces/interfaces';
 export class AvisosComponent implements OnInit {
 
   @Input() avisos: Aviso[] = [];
+  @Input() enFavoritos = false;
+
 
   constructor() { }
 

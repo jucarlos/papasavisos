@@ -14,10 +14,19 @@ export class Tab1Page implements OnInit{
   avisos: Aviso[] = [];
 
   ngOnInit() {
+    this.cargarAvisos();
+  }
+
+  loadData( event ) {
+    this.cargarAvisos(  );
+  }
+
+  cargarAvisos( ) {
     this.avisosService.getAvisos()
-      .subscribe( resp => {
-        this.avisos.push ( ...resp );
-      });
+    .subscribe( resp => {
+
+      this.avisos.push ( ...resp );
+    });
   }
 
 
