@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlAvisos: 'https://papassegedu-desa.jccm.es/segedu/api/avisos',
 };
