@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AvisosService } from '../../services/avisos.service';
+import { Aviso } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab1',
@@ -10,11 +11,13 @@ export class Tab1Page implements OnInit{
 
   constructor( private avisosService: AvisosService) {}
 
+  avisos: Aviso[] = [];
+
   ngOnInit() {
     this.avisosService.getAvisos()
-    .subscribe( avisos => {
-      console.log( avisos );
-    });
+      .subscribe( resp => {
+        this.avisos.push ( ...resp );
+      });
   }
 
 

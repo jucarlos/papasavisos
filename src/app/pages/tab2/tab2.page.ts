@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  misAsuntos = ['hijos', 'notificaciones', 'circulares', 'eventos'];
+
   constructor() {}
 
 }
