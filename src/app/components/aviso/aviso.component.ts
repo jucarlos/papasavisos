@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Aviso } from '../../interfaces/interfaces';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, Platform } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { DataLocalService } from '../../services/data-local.service';
 
@@ -15,10 +15,11 @@ export class AvisoComponent implements OnInit {
   @Input() idAviso: number;
   @Input() enFavoritos;
 
-  constructor( 
+  constructor(
     private actionSheetCtrl: ActionSheetController,
     private socialSharing: SocialSharing,
-    private dataLocalService: DataLocalService
+    private dataLocalService: DataLocalService,
+    private platform: Platform
      ) { }
 
   ngOnInit() {}
@@ -63,10 +64,10 @@ export class AvisoComponent implements OnInit {
         icon: 'share-social',
         cssClass: 'action-primary',
         handler: () => {
-          this.socialSharing.share(
-            this.aviso.titulo,
-            'Consejería de Educación',
-            );
+
+          this.compartirNoticia();
+
+
         }
       }, guardarBorrarBtn,
       {
@@ -82,4 +83,34 @@ export class AvisoComponent implements OnInit {
 
     await actionSheet.present();
   }
+
+  compartirNoticia() {
+
+
+    if ( this.platform.is('cordova')) {
+
+      this.socialSharing.share(
+        this.aviso.titulo,
+        'Consejería de Educación',
+        this.aviso.texto
+        );
+    } else {
+
+      if ( navigator['share'] ) {
+        navigator['share']({
+          title:  this.aviso.titulo,
+          text: this.aviso.texto,
+          url: 'https://educa.jccm.es/es',
+        })
+          .then(() => console.log('Correcto'))
+          .catch((error) => console.log('Error sharing', error));
+      } else {
+        console.log('No soporta share.');
+      }
+
+    }
+  }
+
+
+
 }
