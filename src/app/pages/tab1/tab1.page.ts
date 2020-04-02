@@ -9,6 +9,13 @@ import { Aviso } from '../../interfaces/interfaces';
 })
 export class Tab1Page implements OnInit{
 
+  sliderOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
+
+  errorCarga = false;
+
   constructor( private avisosService: AvisosService) {}
 
   avisos: Aviso[] = [];
@@ -26,6 +33,9 @@ export class Tab1Page implements OnInit{
     .subscribe( resp => {
 
       this.avisos.push ( ...resp );
+    }, ( error ) => {
+      console.log('Error:',  error );
+      this.errorCarga = true;
     });
   }
 

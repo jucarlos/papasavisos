@@ -8,6 +8,17 @@
 
 <ion-content [fullscreen]="true">
 
-  <app-avisos [avisos]="avisos"></app-avisos>
+  <app-avisos  *ngIf="errorCarga" [avisos]="avisos"></app-avisos>
+
+  
+  <ion-slides [options]="sliderOpts"
+              *ngIf="errorCarga">
+    <ion-slide>
+      
+      <ion-label>Hay un error en la carga de avisos.</ion-label>
+
+    </ion-slide>
+  </ion-slides>
+
 
 </ion-content>

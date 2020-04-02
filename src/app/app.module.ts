@@ -17,6 +17,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,6 +34,7 @@ import { environment } from '../environments/environment';
     StatusBar,
     SplashScreen,
     SocialSharing,
+    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
