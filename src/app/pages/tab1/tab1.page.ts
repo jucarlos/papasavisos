@@ -33,6 +33,7 @@ export class Tab1Page implements OnInit{
     .subscribe( resp => {
 
       this.avisos.push ( ...resp );
+      this.errorCarga = false;
     }, ( error ) => {
       console.log('Error:',  error );
       this.errorCarga = true;
