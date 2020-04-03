@@ -20,6 +20,10 @@ export class DataLocalService {
 
   }
 
+  mensaje( mensaje: string ) {
+    this.presentToast( mensaje );
+  }
+
 
 
   guardarAviso( aviso: Aviso ) {

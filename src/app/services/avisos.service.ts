@@ -16,7 +16,7 @@ export class AvisosService {
 
   getAvisos() {
 
-    const url = environment.urlAvisos + '/312500';
+    const url = environment.urlAvisos + '/761597';
 
     return this.http.get<Aviso[]>( url, { headers: this.httpHeaders } );
 

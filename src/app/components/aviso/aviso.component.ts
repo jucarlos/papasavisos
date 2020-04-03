@@ -105,7 +105,7 @@ export class AvisoComponent implements OnInit {
           .then(() => console.log('Correcto'))
           .catch((error) => console.log('Error sharing', error));
       } else {
-        console.log('No soporta share.');
+        this.dataLocalService.mensaje('Opción no soportada en el navegador. Sólo en movil');
       }
 
     }
